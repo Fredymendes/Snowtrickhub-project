@@ -1,0 +1,24 @@
+{# templates/figure/list.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Figures</h1>
+    
+    {% if figures is empty %}
+        <p>Aucune figure n'a été ajoutée pour le moment.</p>
+    {% else %}
+        <ul>
+            {% for figure in figures %}
+                <li>
+                    <h2>{{ figure.name }}</h2>
+                    <p>{{ figure.description }}</p>
+                    <p><strong>Type de Tricks :</strong> {{ figure.trickType }}</p>
+                    <p><strong>Manière de Rider :</strong> {{ figure.ridingStyle }}</p>
+                    {# Ajoutez d'autres détails spécifiques des figures ici #}
+                    <a href="{{ path('figure_show', {'id': figure.id}) }}">Détails</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
